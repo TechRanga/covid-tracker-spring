@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${totalCases}"></h1>
+    <p class="lead">Total Cases.</p>
+    <hr class="my-4">
+    <p>
+        <span>New Cases Reported Today : </span>
+        <span th:text="${newCases}"></span>
+    </p>
+</div>
+<div class="container">
+
+    <table class="table">
+        <tr>
+            <th>STATE</th>
+            <th>COUNTRY</th>
+            <th>CASES</th>
+            <th>CHANGE</th>
+        </tr>
+        <tr th:each="stat : ${stats}" >
+            <td th:text="${stat.state}"></td>
+            <td th:text="${stat.country}"></td>
+            <td th:text="${stat.latestCaseCount}"></td>
+            <td th:text="${stat.delta}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+
+</html>
